@@ -1,0 +1,60 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
+}
+
+android {
+    namespace 'com.example.chatapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.chatapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+    // DIMA
+    // retrofit base  - classic style
+    implementation("com.squareup.retrofit2:retrofit:2.10.0")
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
+//    kotlin style
+//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+//    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+
+
+//    // per viewmodels automatico
+//    implementation "androidx.fragment:fragment-ktx:1.6.2"
+
+
+
+}
