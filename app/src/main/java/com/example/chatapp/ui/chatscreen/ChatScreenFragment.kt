@@ -1,4 +1,4 @@
-package com.example.chatapp.ui.mscreen
+package com.example.chatapp.ui.chatscreen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,36 +8,33 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.chatapp.R
-import com.example.chatapp.databinding.FragmentMainscreenBinding
+import com.example.chatapp.databinding.FragmentChatScreenBinding
 import com.example.chatapp.ui.Navigator
+import com.example.chatapp.ui.chatscreen.test.AdapterTest
 
 
 /* TODO:
-// binding
-
-// adapter
-// - only one vh
-// - adapter.submitList(items = List<Pokemon>)  - automatic function of ListAdapter
-
+// Binding OK
+// ListAdapter OK
+// VH Binding
 // DI - repo, api
-
-//  istanza VM - only logic function, observable updates
+// VM - only logic function, observable updates OK
  */
 
 
-class MScreenFragment : Fragment() {
+class ChatScreenFragment : Fragment() {
 
     // ATRIBUTES
-    private var binding: FragmentMainscreenBinding? = null
+    private var binding: FragmentChatScreenBinding? = null
     private val navigator = Navigator()
-    private val viewModel by viewModels<MScreenVModel>()
+    private val viewModel by viewModels<ChatScreenVModel>()
 
-    private val adapter = MScreenAdapter(
+    private val adapter = ChatScreenAdapter(
         onClick = { chatItem ->
             navigator.startDetail(requireActivity(), chatItem)
             // TODO startDetail create(chatItem)
         })
+//    private val adapter = AdapterTest()
 
 
     // FRAGMENT FUNCTIONS
@@ -48,9 +45,9 @@ class MScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         println("XXX CREATE FRAGMENT")
-        return FragmentMainscreenBinding.inflate(inflater,container,false).root
+        binding = FragmentChatScreenBinding.inflate(inflater, container, false)
+        return binding?.root
     }
-
 
 
     // logic OK
@@ -62,17 +59,19 @@ class MScreenFragment : Fragment() {
         // Observe OK
         viewModel.chatItemList.observe(
             viewLifecycleOwner, Observer {
-                adapter.submitList(it) // OK update list
-                println("XXX SUBMIT ADAPTER")
+                adapter.submitList(it)
+//                adapter.updateList(it)
+                println("XXX FRAGM UPDATE ADAPTER")
             })
 
         // OK
+        // with(binding) - non funziona
         binding?.run {
             // set RV - OK
             recycleView.adapter = adapter
             recycleView.layoutManager = LinearLayoutManager(requireContext())
-
         }
+
 
         // OK
         viewModel.loadUserConversations() // update VModelList

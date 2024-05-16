@@ -1,12 +1,14 @@
 package com.example.chatapp.domain
 
+import java.util.Date
+
 
 data class ChatItem(
     val id: Int,
     val userName: String,
     val avatarUrl: String,
     val lastMessageContent: String,
-    val lastMessageDate: String,
+    val lastMessageDate: Date,
     val unseenCount: Int
     // other business states
 )

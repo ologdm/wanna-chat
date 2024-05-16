@@ -1,4 +1,4 @@
-package com.example.chatapp.data.mscreen
+package com.example.chatapp.data.chatscreen
 
 import com.example.chatapp.data.dto.toDomain
 import com.example.chatapp.domain.ChatItem
@@ -16,7 +16,7 @@ import java.util.Locale
  **/
 
 
-object MScreenRepo {
+object ChatScreenRepo {
 
     // trasforma in Domain
     // ordina
@@ -25,11 +25,10 @@ object MScreenRepo {
         onErrorIO: () -> Unit,
         onErrorOther: () -> Unit
     ) {
-
-        MScreenNetworkDS.getChatsList(
+        ChatScreenNetworkDS.getChatsList(
             onSuccess = {
                 val mappedList = it.map { it.toDomain() }
-                val sortedList = orderByLastMessage(mappedList)
+                val sortedList = mappedList.sortedByDescending { it.lastMessageDate } // Date type
                 onSuccess(sortedList) // ## stato Success
             },
 
@@ -45,15 +44,17 @@ object MScreenRepo {
 
     }
 
-    // OK non serve
-    private fun orderByLastMessage(list: List<ChatItem>): List<ChatItem> {
-        val dataFormat = SimpleDateFormat("HH:mm:ss yyyy-MM-dd", Locale.getDefault())
 
-        return list.sortedByDescending {
-            dataFormat.parse(it.lastMessageDate)
-            // dataFormat.parse ("string") - converte string in dataformat
-        }
-    }
+    /* OK non serve
+//    private fun orderByLastMessage(list: List<ChatItem>): List<ChatItem> {
+//        val dataFormat = SimpleDateFormat("HH:mm:ss yyyy-MM-dd", Locale.getDefault())
+//
+//        return list.sortedByDescending {
+//            dataFormat.parse(it.lastMessageDate)
+//            // dataFormat.parse ("string") - converte string in dataformat
+//        }
+//    }
+     */
 
 
 }

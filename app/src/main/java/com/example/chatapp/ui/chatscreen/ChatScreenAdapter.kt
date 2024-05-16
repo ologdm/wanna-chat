@@ -1,10 +1,10 @@
-package com.example.chatapp.ui.mscreen
+package com.example.chatapp.ui.chatscreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.chatapp.databinding.VhMainscreenBinding
+import com.example.chatapp.databinding.VhChatScreenBinding
 import com.example.chatapp.domain.ChatItem
 
 // pass companion to ListAdapter(constructor)
@@ -12,11 +12,11 @@ import com.example.chatapp.domain.ChatItem
 // altrimenti uso object */
 
 
-class MScreenAdapter(
+class ChatScreenAdapter(
     val onClick: (chatItem: ChatItem) -> Unit // I need to pass name on conversation
-) : ListAdapter<ChatItem, MScreenVH>(MScreenAdapter) {
+) : ListAdapter<ChatItem, ChatScreenVH>(ChatScreenAdapter) {
 
-    // OK
+
     companion object : DiffUtil.ItemCallback<ChatItem>() {   // two members to implement
         // compare if same object (by id)
         override fun areItemsTheSame(oldItem: ChatItem, newItem: ChatItem): Boolean {
@@ -35,26 +35,26 @@ class MScreenAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MScreenVH {
-        // inflater, binding.room
+    ): ChatScreenVH {
         val inflater = LayoutInflater.from(parent.context)
         val binding =
-            VhMainscreenBinding.inflate(inflater, parent, false)
-
-        return MScreenVH(binding)
+            VhChatScreenBinding.inflate(inflater, parent, false)
+        return ChatScreenVH(binding)
         println("XXX ADAPTER CREATE VH")
     }
 
 
     // only logic, bind on VH OK
     override fun onBindViewHolder(
-        holder: MScreenVH,
+        holder: ChatScreenVH,
         position: Int
     ) {
-        val currentDto = getItem(position)
+        val currentItem = getItem(position)
 
-        onClick.invoke(currentDto) // pass dto
-        holder.bindMScreenVH(currentDto) // bind on VH
+//        onClick.invoke(currentItem) // pass dto
+
+
+        holder.bindMScreenVH(currentItem) // bind on VH
         println("XXX ADAPTER LOGIC VH")
     }
 }

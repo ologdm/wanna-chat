@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.example.chatapp.R
 import com.example.chatapp.domain.ChatItem
-import com.example.chatapp.ui.detail.DetailFragment
+import com.example.chatapp.ui.msgscreen.MsgScreenFragment
 
 class Navigator {
 
@@ -23,7 +23,7 @@ class Navigator {
     fun startDetail(fragmentActivity: FragmentActivity, chatItem: ChatItem) {
         val fragmentManager = fragmentActivity.supportFragmentManager
         fragmentManager.beginTransaction()
-            .replace(R.id.frameLayout, DetailFragment.create(chatItem)) // TODO add create
+            .replace(R.id.frameLayout, MsgScreenFragment.create(chatItem)) // TODO add create
             .addToBackStack(null)
             .commit()
     }

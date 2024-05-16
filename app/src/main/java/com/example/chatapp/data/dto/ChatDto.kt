@@ -1,9 +1,14 @@
 package com.example.chatapp.data.dto
 
 import com.example.chatapp.domain.ChatItem
+import com.example.chatapp.utils.formatToDate
 import com.google.gson.annotations.SerializedName
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-// support dto
+
+// OK
 data class ChatDto(
     val id: Int,
     @SerializedName("user_name") val userName: String,
@@ -13,13 +18,16 @@ data class ChatDto(
     @SerializedName("unseen_count") val unseenCount: Int
 )
 
+
 fun ChatDto.toDomain(): ChatItem {
+
     return ChatItem(
-        this.id,
-        this.userName,
-        this.avatarUrl,
-        this.lastMessageContent,
-        this.lastMessageDate,
-        this.unseenCount
+        id = id,
+        userName = userName,
+        avatarUrl = avatarUrl,
+        lastMessageContent = lastMessageContent,
+        lastMessageDate = lastMessageDate.formatToDate()
+            ?: Date(), // shouldn't happen, but in case are null -> use today
+        unseenCount = unseenCount
     )
 }
