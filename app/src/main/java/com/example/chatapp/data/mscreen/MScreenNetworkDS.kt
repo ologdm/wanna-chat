@@ -1,7 +1,8 @@
-package com.example.chatapp.data.mainscreen
+package com.example.chatapp.data.mscreen
 
 import com.example.chatapp.data.ChatApi
-import com.example.chatapp.data.dto.ChatsListDto
+import com.example.chatapp.data.dto.ChatDto
+import com.example.chatapp.data.dto.ChatListDto
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -11,10 +12,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-// header: Intercepter
+/**
+ * header: Intercepter
+ * callback: onSuccess, onError
+ * convert: rawDto -> list<Dto>
+**/
 
-
-class MScreenNetworkDS {
+object MScreenNetworkDS {
 
     // retrofit instance based on site domain - OK
     val retrofit = Retrofit.Builder()
@@ -35,39 +39,41 @@ class MScreenNetworkDS {
         )
         .build()
 
+
     // create Api instance from java class - OK
     val chatApi = retrofit.create(ChatApi::class.java)
 
-    val call: Call<ChatsListDto> = chatApi.getChatsList()
+    // ######### spostare retrofit e api
 
 
     // OK - using lambdas
     fun getChatsList(
-        onSuccess: (ChatsListDto) -> Unit,
+        onSuccess: (List<ChatDto>) -> Unit,
         onError: (Throwable) -> Unit
     ) {
-        call.enqueue(object : Callback<ChatsListDto> {
+        val call: Call<ChatListDto> = chatApi.getChatsList()
+
+        call.enqueue(object : Callback<ChatListDto> {
             override fun onResponse(
-                call: Call<ChatsListDto>, // p0
-                response: Response<ChatsListDto> // p1
+                call: Call<ChatListDto>, // p0
+                response: Response<ChatListDto> // p1
             ) {
                 if (response.isSuccessful) {
-                    onSuccess(response.body()!!)
+                    val rawDto: ChatListDto = response.body()!!
+                    val chatList: List<ChatDto> = rawDto.record
+                    onSuccess(chatList)
                 } else {
-                    // HttpException - retrofit library
-                    onError(HttpException(response))
+                    onError(HttpException(response)) // HttpException() - retrofit library
                 }
             }
 
             override fun onFailure(
-                call: Call<ChatsListDto>,
+                call: Call<ChatListDto>,
                 throwable: Throwable
             ) {
                 onError(throwable)
             }
-
         })
-
     }
 
 
