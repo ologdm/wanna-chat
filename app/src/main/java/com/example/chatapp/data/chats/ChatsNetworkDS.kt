@@ -1,6 +1,5 @@
-package com.example.chatapp.data.chatscreen
+package com.example.chatapp.data.chats
 
-import com.example.chatapp.data.dto.ChatDto
 import com.example.chatapp.data.dto.ChatListDto
 import com.example.chatapp.utils.RetrofitUtils
 import retrofit2.Call
@@ -8,24 +7,17 @@ import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
 
-/**
- * header: Intercepter
- * callback: onSuccess, onError
- * convert: rawDto -> list<Dto>
-**/
 
-object ChatScreenNetworkDS {
+object ChatsNetworkDS {
 
-    // separate retrofit
-    val chatApi = RetrofitUtils.chatApi
+    private val chatApi = RetrofitUtils.chatApi
 
 
-    // OK - using lambdas
     fun getChatsList(
-        onSuccess: (List<ChatDto>) -> Unit,
+        onSuccess: (ChatListDto) -> Unit, // TODO ChatListDto
         onError: (Throwable) -> Unit
     ) {
-        val call: Call<ChatListDto> = chatApi.getChatsList()
+        val call: Call<ChatListDto> = chatApi.getChatsListDto()
 
         call.enqueue(object : Callback<ChatListDto> {
             override fun onResponse(
@@ -33,9 +25,7 @@ object ChatScreenNetworkDS {
                 response: Response<ChatListDto> // p1
             ) {
                 if (response.isSuccessful) {
-                    val rawDto: ChatListDto = response.body()!!
-                    val chatList: List<ChatDto> = rawDto.record
-                    onSuccess(chatList)
+                    onSuccess(response.body()!!)
                 } else {
                     onError(HttpException(response)) // HttpException() - retrofit library
                 }

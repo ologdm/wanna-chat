@@ -1,18 +1,18 @@
 package com.example.chatapp.domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.util.Date
 
-
+@Parcelize
 data class ChatItem(
     val id: Int,
     val userName: String,
     val avatarUrl: String,
-    val lastMessageContent: String,
-    val lastMessageDate: Date,
+    val lastMsgContent: String,
+    val lastMsgDate: Date, //
     val unseenCount: Int
-    // other business states
-)
-
+) : Parcelable
 
 
 /* JSON

@@ -3,12 +3,9 @@ package com.example.chatapp.data.dto
 import com.example.chatapp.domain.ChatItem
 import com.example.chatapp.utils.formatToDate
 import com.google.gson.annotations.SerializedName
-import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale
 
 
-// OK
 data class ChatDto(
     val id: Int,
     @SerializedName("user_name") val userName: String,
@@ -25,8 +22,8 @@ fun ChatDto.toDomain(): ChatItem {
         id = id,
         userName = userName,
         avatarUrl = avatarUrl,
-        lastMessageContent = lastMessageContent,
-        lastMessageDate = lastMessageDate.formatToDate()
+        lastMsgContent = lastMessageContent,
+        lastMsgDate = lastMessageDate.formatToDate()
             ?: Date(), // shouldn't happen, but in case are null -> use today
         unseenCount = unseenCount
     )

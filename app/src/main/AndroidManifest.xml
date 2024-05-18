@@ -22,16 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- maps API KEY  -->
+        <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyCjWNdOGyEltYMdUJnzdjWlAAekmCFQwwc" />
+
     </application>
+
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-
-    <!--  area superiore schermo, non funziona-->
-<!--        <meta-data-->
-<!--                android:name="android.max_aspect"-->
-<!--                android:value="ratio_float" />-->
 
 
 </manifest>

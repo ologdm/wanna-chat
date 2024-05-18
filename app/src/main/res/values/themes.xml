@@ -1,18 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.ChatApp" parent="Theme.Material3.DynamicColors.DayNight">
-
         <!-- no toolbar -->
         <item name="windowNoTitle">true</item>
 
-        <!-- colore status + navigation bar, sfondo -->
-        <item name="android:statusBarColor">?android:colorBackground</item>
-        <item name="android:navigationBarColor">?colorSurfaceContainer</item>
-
-<!--        &lt;!&ndash; colore sfondo status + navigation bar, simboli &ndash;&gt;-->
-<!--        <item name="android:windowLightStatusBar">@bool/light_icons</item>-->
-<!--        <item name="android:windowLightNavigationBar">@bool/light_icons</item>-->
-<!--        -->
+        <!-- colore status + navigation bar, sfondo NON FUNZIONA -->
+<!--        <item name="android:statusBarColor">?android:colorBackground</item>-->
+<!--        <item name="android:navigationBarColor">?colorSurfaceContainer</item>-->
 
     </style>
 

@@ -30,7 +30,7 @@ fun MessageDto.toDomain(): MessageItem {
         id = messageId,
         type = messageType,
         content = messageContent,
-        isMe = isMe,
+        isMe = isMe, //
         date = date ?: Date() // shouldn't happen, but in case both are null -> use today
     )
 }

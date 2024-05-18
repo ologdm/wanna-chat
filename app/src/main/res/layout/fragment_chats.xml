@@ -6,7 +6,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
     <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -14,7 +13,8 @@
             android:title="@string/app_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="?colorPrimary" />
+            android:background="?android:colorBackground" />
+
 
     <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider"
@@ -27,10 +27,11 @@
             android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/vh_chat_screen"
-            android:background="?attr/colorSurfaceContainer"
+            tools:listitem="@layout/vh_chats"
+            android:background="?attr/colorSurfaceVariant"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider"/>
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            android:padding="8dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

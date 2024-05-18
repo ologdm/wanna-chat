@@ -6,14 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.chatapp.R
-import com.example.chatapp.ui.chatscreen.ChatScreenFragment
-
-
-// only access to MainscreeenFragment
+import com.example.chatapp.ui.chats.ChatsFragment
 
 
 class MainActivity : AppCompatActivity() {
-
 
     private val navigator = Navigator()
 
@@ -23,14 +19,12 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge() //
         setContentView(R.layout.activity_main)
 
-         //adapt enableEdgeToEdge() to screen
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        navigator.startMainscreen(this, ChatScreenFragment())
-
+        navigator.startMainscreen(this, ChatsFragment())
     }
 }

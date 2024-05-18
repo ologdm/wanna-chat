@@ -5,12 +5,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.example.chatapp.R
 import com.example.chatapp.domain.ChatItem
-import com.example.chatapp.ui.msgscreen.MsgScreenFragment
+import com.example.chatapp.ui.detail.DetailFragment
 
 class Navigator {
 
 
-    // start Mainscreen OK
     fun startMainscreen(fragmentActivity: FragmentActivity, fragment: Fragment) {
         val fragmentManager: FragmentManager = fragmentActivity.supportFragmentManager
         fragmentManager.beginTransaction()
@@ -19,11 +18,10 @@ class Navigator {
     }
 
 
-    // start detail OK
     fun startDetail(fragmentActivity: FragmentActivity, chatItem: ChatItem) {
         val fragmentManager = fragmentActivity.supportFragmentManager
         fragmentManager.beginTransaction()
-            .replace(R.id.frameLayout, MsgScreenFragment.create(chatItem)) // TODO add create
+            .replace(R.id.frameLayout, DetailFragment.create(chatItem))
             .addToBackStack(null)
             .commit()
     }

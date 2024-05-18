@@ -7,14 +7,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-// Retrofit
-// ChatApi
-
-// enqueue generale
-
 object RetrofitUtils {
 
-    // retrofit instance based on site domain - OK
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://api.jsonbin.io/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -33,15 +27,8 @@ object RetrofitUtils {
         )
         .build()
 
-    // create Api instance from java class - OK
+
     val chatApi = retrofit.create(ChatApi::class.java)
-
-
-
-//    fun getChatApi(): ChatApi {
-//        val chatApi = retrofit.create(ChatApi::class.java)
-//        return chatApi
-//    }
 
 }
 
