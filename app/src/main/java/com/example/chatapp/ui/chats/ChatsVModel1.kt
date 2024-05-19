@@ -18,18 +18,19 @@ class ChatsVModel1() : ViewModel() {
         ChatsRepo1.getChatsList {
             when (it) {
                 is IoResponse.Success -> {
+                    println("ZZZ VM SUCCESS")
                     state.value = StateContainer(items = it.value)
-                    println("YYY SUCCESS")
+
                 }
 
                 is IoResponse.NetworkError -> {
+                    println("ZZZ VM ERROR IO")
                     state.value = StateContainer(isNetworkError = true)
-                    println("YYY IO")
                 }
 
                 is IoResponse.OtherError -> {
+                    println("ZZZ VM ERROR OTHER")
                     state.value = StateContainer(isOtherError = true)
-                    println("YYY OTHER")
                 }
             }
         }

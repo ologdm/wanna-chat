@@ -26,9 +26,11 @@ object ChatsNetworkDS1 {
             ) {
                 if (response.isSuccessful) {
                     onResponse(IoResponse.Success(response.body()!!)) // ##
+                    println("ZZZ RETROFIT SUCCESS")
                 } else {
                     HttpException(response).printStackTrace()
                     onResponse(IoResponse.OtherError(HttpException(response))) // ##
+                    println("ZZZ RETROFIT OTHER")
                 }
             }
 
@@ -38,6 +40,7 @@ object ChatsNetworkDS1 {
             ) {
                 throwable.printStackTrace()
                 IoResponse.NetworkError(throwable) // ##
+                println("ZZZ RETROFIT IO")
             }
         })
     }
