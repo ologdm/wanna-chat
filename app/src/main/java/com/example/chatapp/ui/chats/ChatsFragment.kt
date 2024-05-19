@@ -11,18 +11,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.databinding.FragmentChatsBinding
 import com.example.chatapp.ui.Navigator
 import com.example.chatapp.utils.statesFlow
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class ChatsFragment : Fragment() {
 
     private var binding: FragmentChatsBinding? = null
-    private val navigator = Navigator()
-    private val viewModel by viewModels<ChatsVModel>()
+
+    @Inject
+    lateinit var navigator: Navigator
 
     private val adapter = ChatsAdapter(
         onClick = { chatItem ->
-            navigator.startDetail(requireActivity(), chatItem)
+            navigator.startDetailFragment(chatItem)
         })
+
+
+    private val viewModel by viewModels<ChatsVModel>()
 
 
     override fun onCreateView(
@@ -30,7 +36,6 @@ class ChatsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("XXX CREATE FRAGMENT")
         binding = FragmentChatsBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -38,9 +43,7 @@ class ChatsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding = FragmentMainscreenBinding.bind(view) // in place of onCreateView
 
-        println("XXX LOGIC FRAGMENT")
 
         viewModel.state.observe(
             viewLifecycleOwner, Observer { stateContainer ->
@@ -63,9 +66,6 @@ class ChatsFragment : Fragment() {
         binding?.errorScreen?.retryButton?.setOnClickListener {
             viewModel.loadUserConversations()
         }
-
-
-        viewModel.loadUserConversations()
     }
 
 

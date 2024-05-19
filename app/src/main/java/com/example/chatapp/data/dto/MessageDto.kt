@@ -5,7 +5,6 @@ import com.example.chatapp.utils.formatToDate
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 
-// OK
 data class MessageDto(
     @SerializedName("message_id") val messageId: Int,
     @SerializedName("message_type") val messageType: String,

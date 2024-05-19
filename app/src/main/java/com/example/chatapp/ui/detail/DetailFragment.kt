@@ -12,16 +12,11 @@ import com.bumptech.glide.Glide
 import com.example.chatapp.databinding.FragmentDetailBinding
 import com.example.chatapp.domain.ChatItem
 import com.example.chatapp.utils.statesFlow
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
-
-    private var binding: FragmentDetailBinding? = null
-    val viewModel by viewModels<DetailVModel>()
-    private val adapter = DetailAdapter() // TODO check
-
-    // TODO lateinit check
-    private var chatItem: ChatItem? = null
-
 
     companion object {
         const val ITEM_KEY = "id_key"
@@ -34,6 +29,15 @@ class DetailFragment : Fragment() {
             return detailFragment
         }
     }
+
+
+    private var binding: FragmentDetailBinding? = null
+    private val adapter = DetailAdapter() // TODO check
+
+    // TODO lateinit check
+    private var chatItem: ChatItem? = null
+
+    val viewModel by viewModels<DetailVModel>()
 
 
     override fun onCreateView(

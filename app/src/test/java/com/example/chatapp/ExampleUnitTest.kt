@@ -1,5 +1,6 @@
 package com.example.chatapp
 
+import org.junit.Assert
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -12,6 +13,12 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val list = listOf(1, 2, 3, 4)
+            .filter { it % 2 == 0 }
+
+        Assert.assertEquals(listOf(2,4), list)
+
+
+        Assert.assertEquals(4, 2 + 2)
     }
 }

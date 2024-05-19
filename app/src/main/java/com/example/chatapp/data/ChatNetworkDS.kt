@@ -1,20 +1,21 @@
-package com.example.chatapp.data.chats
+package com.example.chatapp.data
 
 import com.example.chatapp.data.dto.ChatListDto
+import com.example.chatapp.data.dto.MessageListDto
 import com.example.chatapp.utils.IoResponse
-import com.example.chatapp.utils.RetrofitUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
-object ChatsNetworkDS {
-
-
-    private val chatApi = RetrofitUtils.chatApi
-
+@Singleton
+class ChatNetworkDS @Inject constructor(
+    val chatApi: ChatApi
+) {
 
     fun getChatsList(onResponse: (IoResponse<ChatListDto>) -> Unit) {
 
@@ -27,11 +28,9 @@ object ChatsNetworkDS {
             ) {
                 if (response.isSuccessful) {
                     onResponse(IoResponse.Success(response.body()!!)) // ##
-                    println("ZZZ RETROFIT SUCCESS")
                 } else {
                     HttpException(response).printStackTrace()
                     onResponse(IoResponse.OtherError(HttpException(response))) // ##
-                    println("ZZZ RETROFIT OTHER")
                 }
             }
 
@@ -39,15 +38,43 @@ object ChatsNetworkDS {
                 call: Call<ChatListDto>,
                 throwable: Throwable
             ) {
-                if (throwable is IOException){
+                if (throwable is IOException) {
                     onResponse(IoResponse.NetworkError(throwable)) // ##
-                } else{
+                } else {
                     IoResponse.OtherError(throwable) // ##
                 }
 
-                println("ZZZ RETROFIT IO")
             }
         })
+    }
+
+
+
+    fun getMessageList(onResponse: (IoResponse<MessageListDto>) -> Unit) {
+
+        val call: Call<MessageListDto> = chatApi.getMessageListDto()
+
+        call.enqueue(object : Callback<MessageListDto> {
+            override fun onResponse(
+                call: Call<MessageListDto>,
+                response: Response<MessageListDto>
+            ) {
+                if (response.isSuccessful) {
+                    onResponse(IoResponse.Success(response.body()!!)) // ##
+                } else {
+                    onResponse(IoResponse.OtherError(HttpException(response))) // ##
+                }
+            }
+
+            override fun onFailure(call: Call<MessageListDto>, throwable: Throwable) {
+                onResponse(IoResponse.NetworkError(throwable)) // ##
+
+
+
+            }
+
+        })
+
     }
 
 
