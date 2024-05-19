@@ -28,7 +28,7 @@ class ChatsFragment : Fragment() {
         })
 
 
-    private val viewModel by viewModels<ChatsVModel>()
+    private val viewModel by viewModels<ChatsViewModel>()
 
 
     override fun onCreateView(
@@ -68,6 +68,10 @@ class ChatsFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
 }
 

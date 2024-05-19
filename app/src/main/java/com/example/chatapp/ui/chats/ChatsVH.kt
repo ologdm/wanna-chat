@@ -9,12 +9,10 @@ import com.example.chatapp.utils.formatToStringDate
 
 
 class ChatsVH(
-    val binding: VhChatsBinding
+    private val binding: VhChatsBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindChatsVH(chatItem: ChatItem) {
-
-        // foto, name, message, time OK
         binding.run {
             userName.text = chatItem.userName
             lastMessage.text = chatItem.lastMsgContent

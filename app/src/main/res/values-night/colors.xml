@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <bool name="light_icons">false</bool>
+    <color name="chat_green">#313d28</color>
 
 </resources>

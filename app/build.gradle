@@ -43,13 +43,6 @@ android {
         viewBinding true
     }
 
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-
-
 }
 
 dependencies {
@@ -63,25 +56,19 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
 
-
-    // retrofit base  - classic style
+    // retrofit
     implementation("com.squareup.retrofit2:retrofit:2.10.0")
-    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
-//    kotlin style
-//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-//    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
-
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     // viewmodels automatico
     implementation "androidx.fragment:fragment-ktx:1.7.1"
 
     // glide
     implementation 'com.github.bumptech.glide:glide:4.16.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
 
     // parcelize
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
-    implementation "androidx.core:core-ktx:1.8.0"
 
     // maps
     implementation 'com.google.android.gms:play-services-maps:18.2.0'

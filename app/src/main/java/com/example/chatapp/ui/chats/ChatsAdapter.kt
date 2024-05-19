@@ -9,7 +9,7 @@ import com.example.chatapp.domain.ChatItem
 
 
 class ChatsAdapter(
-    val onClick: (chatItem: ChatItem) -> Unit
+    private val onClick: (chatItem: ChatItem) -> Unit
 ) : ListAdapter<ChatItem, ChatsVH>(ChatsAdapter) {
 
 

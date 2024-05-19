@@ -8,7 +8,8 @@
         android:orientation="vertical"
         app:cardElevation="5dp"
         app:cardCornerRadius="12dp"
-        android:layout_gravity="end">
+        android:layout_gravity="end"
+        app:cardBackgroundColor="@color/chat_green">
 
     <LinearLayout
             android:layout_width="wrap_content"
@@ -22,9 +23,8 @@
                 app:cardCornerRadius="4dp"
                 app:cardElevation="0dp">
 
-            <fragment
+            <com.google.android.gms.maps.MapView
                     android:id="@+id/map"
-                    android:name="com.google.android.gms.maps.MapFragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:liteMode="true"/>

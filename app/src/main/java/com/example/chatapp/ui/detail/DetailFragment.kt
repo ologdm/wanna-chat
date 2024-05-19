@@ -32,12 +32,11 @@ class DetailFragment : Fragment() {
 
 
     private var binding: FragmentDetailBinding? = null
-    private val adapter = DetailAdapter() // TODO check
+    private val adapter = DetailAdapter()
 
-    // TODO lateinit check
     private var chatItem: ChatItem? = null
 
-    val viewModel by viewModels<DetailVModel>()
+    private val viewModel by viewModels<DetailViewModel>()
 
 
     override fun onCreateView(
@@ -55,13 +54,10 @@ class DetailFragment : Fragment() {
 
 
         val bundle = arguments
-        chatItem
         if (bundle != null) {
-            chatItem = bundle.getParcelable(ITEM_KEY)  // TODO check
+            chatItem = bundle.getParcelable(ITEM_KEY)
         }
 
-
-        // TODO check null
         binding?.run {
             recyclerView.adapter = adapter
             recyclerView.layoutManager =
@@ -90,7 +86,16 @@ class DetailFragment : Fragment() {
             )
         })
 
+        binding?.errorScreen?.retryButton?.setOnClickListener {
+            viewModel.loadConversationMessages()
+        }
+
 
         viewModel.loadConversationMessages()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

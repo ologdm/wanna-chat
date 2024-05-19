@@ -3,7 +3,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/messageEditTextLayout"
+        android:background="?colorPrimaryContainer">
 
 
     <Toolbar
@@ -19,14 +21,14 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-<!-- colore dinamico giorno/notte !!!-->
             <ImageButton
                     android:id="@+id/buttonBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/baseline_arrow_back_24"
                     android:background="@android:color/transparent"
-                    android:layout_marginEnd="16dp" />
+                    android:layout_marginEnd="16dp"
+                    app:tint="?colorOnSurface"/>
 
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -45,7 +47,8 @@
                     android:layout_height="wrap_content"
                     tools:text="@tools:sample/full_names"
                     style="@style/Username_Text_Style"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textColor="?colorOnSurface"/>
 
 
         </LinearLayout>
@@ -59,9 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             tools:listitem="@layout/vh_detail_text_received"
-            android:background="?colorPrimaryContainer"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toTopOf="@+id/messageEditTextLayout"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                />
+                android:background="?colorSurfaceContainer"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +91,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_arrow_right_24"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/messageEditTextLayout"
+            app:layout_constraintBottom_toBottomOf="@+id/messageEditTextLayout"
+            style="@style/RoundedImageButton"
+            app:tint="?colorOnPrimary"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent" />
 
 
