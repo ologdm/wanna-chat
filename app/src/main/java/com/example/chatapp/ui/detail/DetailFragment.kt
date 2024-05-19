@@ -6,23 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.chatapp.databinding.FragmentDetailBinding
 import com.example.chatapp.domain.ChatItem
-import com.example.chatapp.ui.chats.ChatsVModel
+import com.example.chatapp.utils.statesFlow
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
-
-    private var binding: FragmentDetailBinding? = null
-    val viewModel by viewModels<DetailVModel>()
-    private val adapter = DetailAdapter() // TODO check
-
-    // TODO lateinit check
-    private var chatItem: ChatItem? = null
-
 
     companion object {
         const val ITEM_KEY = "id_key"
@@ -35,6 +29,15 @@ class DetailFragment : Fragment() {
             return detailFragment
         }
     }
+
+
+    private var binding: FragmentDetailBinding? = null
+    private val adapter = DetailAdapter() // TODO check
+
+    // TODO lateinit check
+    private var chatItem: ChatItem? = null
+
+    val viewModel by viewModels<DetailVModel>()
 
 
     override fun onCreateView(
@@ -61,7 +64,8 @@ class DetailFragment : Fragment() {
         // TODO check null
         binding?.run {
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
+            recyclerView.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
 
             buttonBack.setOnClickListener {
                 requireActivity().onBackPressed()
@@ -74,12 +78,16 @@ class DetailFragment : Fragment() {
             userName.text = chatItem?.userName
         }
 
-        // OK
-        viewModel.itemList.observe(viewLifecycleOwner, Observer {
-            adapter.updateList(it)
-//            val list = it
-//            println("XXX DETAILS LIST UPDATE")
 
+        viewModel.state.observe(viewLifecycleOwner, Observer { stateContainer ->
+
+            adapter.updateList(stateContainer.items)
+
+            stateContainer.statesFlow(
+                binding!!.progressBar,
+                binding!!.errorScreen.errorText,
+                binding!!.errorScreen.retryButton
+            )
         })
 
 

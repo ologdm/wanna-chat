@@ -2,38 +2,42 @@ package com.example.chatapp.ui.chats
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chatapp.data.chats.ChatsRepo1
+import com.example.chatapp.data.ChatRepo
 import com.example.chatapp.domain.ChatItem
 import com.example.chatapp.utils.IoResponse
+import com.example.chatapp.utils.StateContainer
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
+@HiltViewModel
+class ChatsVModel @Inject constructor(
+    private val repository: ChatRepo
+) : ViewModel() {
 
-class ChatsVModel() : ViewModel() {
+    val state = MutableLiveData<StateContainer<ChatItem>>()
 
-    val itemList = MutableLiveData<List<ChatItem>>()
-
+    init {
+        loadUserConversations()
+    }
 
     fun loadUserConversations() {
+        state.value = StateContainer(isLoading = true)
 
-        ChatsRepo1.getChatsList {
-            when (it) {
+        repository.getChats { response ->
+            when (response) {
                 is IoResponse.Success -> {
-                    itemList.value = it.value
+                    state.value = StateContainer(items = response.value)
                 }
-
                 is IoResponse.NetworkError -> {
-                    // TODO no internet
+                    state.value = StateContainer(isNetworkError = true)
                 }
-
                 is IoResponse.OtherError -> {
-                    // TODO other error
+                    state.value = StateContainer(isOtherError = true)
                 }
             }
         }
 
     }
-
-
-
 
 
 }

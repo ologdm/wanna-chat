@@ -1,7 +1,7 @@
 package com.example.chatapp.utils
 
 
-// step 1° Ok
+
 sealed interface IoResponse<out T> {
 
     data class Success<T>(val value: T) : IoResponse<T>
@@ -9,7 +9,7 @@ sealed interface IoResponse<out T> {
     data class OtherError(val throwable: Throwable) : IoResponse<Nothing>
 }
 
-// step 2°
+
 fun <T, R> IoResponse<T>.ioMapper(mapper: (T) -> R): IoResponse<R> {
     return when (this) {
         is IoResponse.Success -> IoResponse.Success(mapper(value))

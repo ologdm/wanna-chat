@@ -2,7 +2,14 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id ("kotlin-parcelize")
+
+    // hilt dagger
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
 }
+
+
 
 android {
     namespace 'com.example.chatapp'
@@ -76,8 +83,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"
     implementation "androidx.core:core-ktx:1.8.0"
 
-
+    // maps
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
 
+    // hilt dagger
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
 
+}
+
+kapt {
+    correctErrorTypes true
 }

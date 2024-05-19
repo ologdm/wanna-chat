@@ -7,6 +7,7 @@ import com.example.chatapp.domain.ChatItem
 import com.example.chatapp.utils.formatToStringDate
 
 
+
 class ChatsVH(
     val binding: VhChatsBinding
 ) : RecyclerView.ViewHolder(binding.root) {

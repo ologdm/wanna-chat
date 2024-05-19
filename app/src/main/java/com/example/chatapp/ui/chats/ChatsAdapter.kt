@@ -31,7 +31,6 @@ class ChatsAdapter(
         val binding =
             VhChatsBinding.inflate(inflater, parent, false)
         return ChatsVH(binding)
-        println("XXX ADAPTER CREATE VH")
     }
 
 

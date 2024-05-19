@@ -14,13 +14,11 @@ class DetailAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
-        // 4
         const val VH_TYPE_TEXT_RECEIVED = 1
         const val VH_TYPE_TEXT_SENT = 2
         const val VH_TYPE_LOCATION_RECEIVED = 3
         const val VH_TYPE_LOCATION_SENT = 4
 
-        // 2
         const val TEXT = "text"
         const val LOCATION = "location"
     }
@@ -33,7 +31,7 @@ class DetailAdapter(
         return when (item.type) {
             TEXT -> if (item.isMe) VH_TYPE_TEXT_SENT else VH_TYPE_TEXT_RECEIVED
             LOCATION -> if (item.isMe) VH_TYPE_LOCATION_SENT else VH_TYPE_LOCATION_RECEIVED
-            else -> error("invalid type") // lancia eccezione Illegal state sempre
+            else -> error("invalid type")
         }
     }
 
