@@ -17,7 +17,7 @@ class ChatsFragment : Fragment() {
 
     private var binding: FragmentChatsBinding? = null
     private val navigator = Navigator()
-    private val viewModel by viewModels<ChatsVModel1>()
+    private val viewModel by viewModels<ChatsVModel>()
 
     private val adapter = ChatsAdapter(
         onClick = { chatItem ->
