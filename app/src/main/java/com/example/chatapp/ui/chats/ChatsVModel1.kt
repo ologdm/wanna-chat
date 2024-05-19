@@ -5,34 +5,36 @@ import androidx.lifecycle.ViewModel
 import com.example.chatapp.data.chats.ChatsRepo1
 import com.example.chatapp.domain.ChatItem
 import com.example.chatapp.utils.IoResponse
+import com.example.chatapp.utils.StateContainer
 
 
-class ChatsVModel() : ViewModel() {
+class ChatsVModel1() : ViewModel() {
 
-    val itemList = MutableLiveData<List<ChatItem>>()
-
+    val state = MutableLiveData<StateContainer<ChatItem>>()
 
     fun loadUserConversations() {
+        state.value = StateContainer(isLoading = true)
 
         ChatsRepo1.getChatsList {
             when (it) {
                 is IoResponse.Success -> {
-                    itemList.value = it.value
+                    state.value = StateContainer(items = it.value)
+                    println("YYY SUCCESS")
                 }
 
                 is IoResponse.NetworkError -> {
-                    // TODO no internet
+                    state.value = StateContainer(isNetworkError = true)
+                    println("YYY IO")
                 }
 
                 is IoResponse.OtherError -> {
-                    // TODO other error
+                    state.value = StateContainer(isOtherError = true)
+                    println("YYY OTHER")
                 }
             }
         }
 
     }
-
-
 
 
 

@@ -7,8 +7,13 @@ import com.example.chatapp.R
 import com.example.chatapp.domain.ChatItem
 import com.example.chatapp.ui.detail.DetailFragment
 
-class Navigator {
 
+class Navigator
+   // inj constructor(
+//    private val activity: FragmentActivity - mettere qua
+//    per avere direttamente gli fragment
+//)
+{
 
     fun startMainscreen(fragmentActivity: FragmentActivity, fragment: Fragment) {
         val fragmentManager: FragmentManager = fragmentActivity.supportFragmentManager

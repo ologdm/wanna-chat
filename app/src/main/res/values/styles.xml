@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--minimo indispensabile-->
-
-    <style name="RoundedImageButton">
-        <item name="android:background">@drawable/baseline_circle</item>
-        <item name="android:elevation">4dp</item>
-    </style>
+    <!--    <style name="RoundedImageButton">-->
+    <!--        <item name="android:background">@drawable/baseline_circle</item>-->
+    <!--        <item name="android:elevation">4dp</item>-->
+    <!--    </style>-->
 
 
+    <!-- avatar image-->
     <style name="RoundedImageViewDetail" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
 
-
     <style name="RoundedImageViewChats" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">18dp</item>
+        <item name="cornerSize">24dp</item>
     </style>
 
 
-    <style name="ES_ProgressBarStyle">
-        <item name="android:visibility">gone</item>
+    <style name="ProgressBarStyle">
+        <item name="android:visibility">visible</item>
         <item name="android:elevation">4dp</item>
         <item name="android:indeterminate">true</item>
     </style>
 
 
-    <style name="ES_ErrorTextStyle">
-        <item name="android:visibility">gone</item>
+    <!-- 1.1 message_chats: default -->
+
+    <!-- 1.2 message_detail-->
+    <style name="Primary_Text_Style">
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <!-- 2 date: hint, correggere-->
+
+    <!-- 3 username_chats :  -->
+    <style name="Username_Text_Style">
         <item name="android:textSize">16sp</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:background">?attr/colorSurfaceContainer</item>
-        <item name="android:tint">?attr/colorOnSurface</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 

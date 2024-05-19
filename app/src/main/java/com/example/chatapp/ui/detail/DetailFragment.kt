@@ -71,7 +71,7 @@ class DetailFragment : Fragment() {
                 .load(chatItem?.avatarUrl)
                 .into(avatarImage)
 
-            username.text = chatItem?.userName
+            userName.text = chatItem?.userName
         }
 
         // OK

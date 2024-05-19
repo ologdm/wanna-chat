@@ -10,13 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatapp.databinding.FragmentChatsBinding
 import com.example.chatapp.ui.Navigator
+import com.example.chatapp.utils.statesFlow
 
 
 class ChatsFragment : Fragment() {
 
     private var binding: FragmentChatsBinding? = null
     private val navigator = Navigator()
-    private val viewModel by viewModels<ChatsVModel>()
+    private val viewModel by viewModels<ChatsVModel1>()
 
     private val adapter = ChatsAdapter(
         onClick = { chatItem ->
@@ -41,10 +42,16 @@ class ChatsFragment : Fragment() {
 
         println("XXX LOGIC FRAGMENT")
 
-        viewModel.itemList.observe(
-            viewLifecycleOwner, Observer {
-                adapter.submitList(it)
-                println("XXX FRAGM UPDATE ADAPTER")
+        viewModel.state.observe(
+            viewLifecycleOwner, Observer { stateContainer ->
+
+                adapter.submitList(stateContainer.items)
+
+                stateContainer.statesFlow(
+                    binding!!.progressBar,
+                    binding!!.errorScreen.errorText,
+                    binding!!.errorScreen.retryButton
+                )
             })
 
 
@@ -53,8 +60,15 @@ class ChatsFragment : Fragment() {
             recycleView.layoutManager = LinearLayoutManager(requireContext())
         }
 
+        binding?.errorScreen?.retryButton?.setOnClickListener {
+            viewModel.loadUserConversations()
+        }
+
 
         viewModel.loadUserConversations()
     }
 
+
 }
+
+

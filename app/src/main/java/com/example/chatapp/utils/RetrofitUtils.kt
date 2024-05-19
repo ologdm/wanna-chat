@@ -3,6 +3,7 @@ package com.example.chatapp.utils
 import com.example.chatapp.data.ChatApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -30,6 +31,11 @@ object RetrofitUtils {
 
     val chatApi = retrofit.create(ChatApi::class.java)
 
+}
+
+
+fun <T> Call<T>.start() {
+    // TODO
 }
 
 

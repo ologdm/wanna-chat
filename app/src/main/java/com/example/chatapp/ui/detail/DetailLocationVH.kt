@@ -14,16 +14,14 @@ class DetailLocationReceivedVH(
 
 
     fun bind(item: MessageItem) {
+        // 1
         binding.map.onCreate(null)
-
+        // 2
         binding.map.getMapAsync {
-            val list = item.content.split(",")
-
-            // Maps - todo da vedere
             val (lat, long) = item.content.split(",")
             val position = LatLng(lat.toDouble(), long.toDouble())
 
-            binding.map.onResume()
+            binding.map.onResume() // TODO si può togliere?
             it.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
             it.addMarker(MarkerOptions().position(position))
         }
@@ -34,7 +32,6 @@ class DetailLocationReceivedVH(
 class DetailLocationSentVH(
     val binding: VhDetailLocationSentBinding
 ) : ViewHolder(binding.root) {
-
 
     fun bind(item: MessageItem) {
 

@@ -20,7 +20,7 @@ class ChatsVH(
             Glide.with(binding.root)
                 .load(chatItem.avatarUrl)
                 .into(avatarImage)
-            lastDate.text = chatItem.lastMsgDate.formatToStringDate()
+            lastDate.hint = chatItem.lastMsgDate.formatToStringDate()
         }
 
     }

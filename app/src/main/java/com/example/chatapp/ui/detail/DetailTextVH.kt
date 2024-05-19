@@ -13,7 +13,7 @@ class DetailTextReceivedVH(
 
     fun bindTextVH(item: MessageItem){
         binding.messageText.text = item.content
-        binding.date.text= item.date.formatToStringDateTime()
+        binding.date.hint= item.date.formatToStringDateTime()
     }
 
 }
@@ -25,7 +25,7 @@ class DetailTextSentVH(
 
     fun bindTextVH(item: MessageItem){
         binding.messageText.text = item.content
-        binding.date.text= item.date.formatToStringDateTime()
+        binding.date.hint= item.date.formatToStringDateTime()
     }
 
 }

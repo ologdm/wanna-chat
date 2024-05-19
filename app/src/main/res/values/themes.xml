@@ -5,8 +5,12 @@
         <item name="windowNoTitle">true</item>
 
         <!-- colore status + navigation bar, sfondo NON FUNZIONA -->
-<!--        <item name="android:statusBarColor">?android:colorBackground</item>-->
-<!--        <item name="android:navigationBarColor">?colorSurfaceContainer</item>-->
+        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:navigationBarColor">?colorSurfaceContainer</item>
+
+        <!-- colore sfondo status + navigation bar, simboli -->
+        <item name="android:windowLightStatusBar">@bool/light_icons</item>
+        <item name="android:windowLightNavigationBar">@bool/light_icons</item>
 
     </style>
 

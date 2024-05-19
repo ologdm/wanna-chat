@@ -6,27 +6,26 @@
         android:layout_height="match_parent">
 
 
-    <!-- photo, name -->
     <Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:colorPrimary"
+            android:background="?android:colorBackground"
             app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-
+<!-- colore dinamico giorno/notte !!!-->
             <ImageButton
                     android:id="@+id/buttonBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/baseline_arrow_back_24"
-                    android:background="@drawable/baseline_circle"
-                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
                     android:layout_marginEnd="16dp" />
 
 
@@ -35,19 +34,18 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     tools:src="@tools:sample/avatars"
-                    android:layout_gravity="center_vertical"
                     android:background="#fff"
                     android:layout_marginEnd="16dp"
                     app:shapeAppearanceOverlay="@style/RoundedImageViewDetail" />
 
 
             <TextView
-                    android:id="@+id/username"
+                    android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="username"
-                    android:textSize="16sp"/>
+                    tools:text="@tools:sample/full_names"
+                    style="@style/Username_Text_Style"
+                    android:textSize="16sp" />
 
 
         </LinearLayout>
@@ -55,39 +53,34 @@
 
     </Toolbar>
 
-    <!--linear progress bar-->
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progressBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:visibility="visible"
-            style="@style/ES_ProgressBarStyle"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
-    <!--            colore visibile-->
-
-
-    <!-- error msg-->
-    <TextView
-            android:id="@+id/errorMsgTextview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:visibility="visible"
-            tools:hint="custom error text"
-            android:layout_gravity="top|center"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/ES_ErrorTextStyle" />
-
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            tools:listitem="@layout/vh_detail_text_received"
             android:background="?colorPrimaryContainer"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="visible"
+            style="@style/ProgressBarStyle"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+
+    <include
+            android:id="@+id/error_screen"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            layout="@layout/error_screen"
+            android:layout_gravity="center"
+            android:visibility="visible"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
