@@ -5,8 +5,8 @@ package com.example.chatapp.utils
 sealed interface IoResponse<out T> {
 
     data class Success<T>(val value: T) : IoResponse<T>
-    data class NetworkError(val throwable: Throwable) : IoResponse<Nothing>
-    data class OtherError(val throwable: Throwable) : IoResponse<Nothing>
+    data object NetworkError : IoResponse<Nothing>
+    data object OtherError : IoResponse<Nothing>
 }
 
 

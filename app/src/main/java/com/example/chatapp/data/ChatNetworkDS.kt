@@ -29,7 +29,7 @@ class ChatNetworkDS @Inject constructor(
                 } else {
                     val exception = HttpException(response)
                     exception.printStackTrace()
-                    onResponse(IoResponse.OtherError(exception))
+                    onResponse(IoResponse.OtherError)
                 }
             }
 
@@ -38,7 +38,7 @@ class ChatNetworkDS @Inject constructor(
                 throwable: Throwable
             ) {
                 throwable.printStackTrace()
-                onResponse(IoResponse.NetworkError(throwable))
+                onResponse(IoResponse.NetworkError)
             }
         })
     }
@@ -57,13 +57,13 @@ class ChatNetworkDS @Inject constructor(
                 } else {
                     val exception = HttpException(response)
                     exception.printStackTrace()
-                    onResponse(IoResponse.OtherError(exception))
+                    onResponse(IoResponse.OtherError)
                 }
             }
 
             override fun onFailure(call: Call<MessageListDto>, throwable: Throwable) {
                 throwable.printStackTrace()
-                onResponse(IoResponse.NetworkError(throwable))
+                onResponse(IoResponse.NetworkError)
             }
 
         })

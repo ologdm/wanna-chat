@@ -2,8 +2,7 @@ package com.example.chatapp.ui.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chatapp.data.ChatRepo
-import com.example.chatapp.domain.ChatItem
+import com.example.chatapp.domain.ChatRepo
 import com.example.chatapp.domain.MessageItem
 import com.example.chatapp.utils.IoResponse
 import com.example.chatapp.utils.StateContainer
@@ -12,8 +11,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val repository :ChatRepo
+    private val repository : ChatRepo
 ) : ViewModel() {
+
 
     val state = MutableLiveData<StateContainer<MessageItem>>()
 

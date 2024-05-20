@@ -2,8 +2,8 @@ package com.example.chatapp.ui.chats
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.chatapp.data.ChatRepo
 import com.example.chatapp.domain.ChatItem
+import com.example.chatapp.domain.ChatRepo
 import com.example.chatapp.utils.IoResponse
 import com.example.chatapp.utils.StateContainer
 import dagger.hilt.android.lifecycle.HiltViewModel
