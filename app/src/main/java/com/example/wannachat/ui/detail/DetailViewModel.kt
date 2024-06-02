@@ -14,8 +14,11 @@ class DetailViewModel @Inject constructor(
     private val repository : ChatRepo
 ) : ViewModel() {
 
-
     val state = MutableLiveData<StateContainer<MessageItem>>()
+
+    init {
+        loadConversationMessages()
+    }
 
 
     fun loadConversationMessages() {

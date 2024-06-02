@@ -1,5 +1,6 @@
 package com.example.wannachat.ui.detail
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -63,6 +64,11 @@ class DetailFragment : Fragment() {
             recyclerView.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
 
+//            // TODO offset
+//            var px = 20.toPx(requireContext())
+////            recyclerView.addItemDecoration(CustomItemDecoration(px))
+////            recyclerView.addItemDecoration(GroupItemDecoration(px))
+
             buttonBack.setOnClickListener {
                 requireActivity().onBackPressed()
             }
@@ -91,11 +97,19 @@ class DetailFragment : Fragment() {
         }
 
 
-        viewModel.loadConversationMessages()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
     }
+
+
+    // TODO offset
+    fun Int.toPx(context: Context): Int {
+        return (this * context.resources.displayMetrics.density).toInt()
+    }
 }
+
+

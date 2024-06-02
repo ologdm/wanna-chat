@@ -30,7 +30,7 @@
                     android:id="@+id/messageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Primary_Text_Style"
+                    style="@style/Text_Primary"
                     tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
 
             <TextView

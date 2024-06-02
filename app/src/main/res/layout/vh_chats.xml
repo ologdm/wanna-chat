@@ -18,7 +18,7 @@
             android:layout_marginBottom="8dp"
             android:background="@android:color/white"
             tools:src="@tools:sample/avatars"
-            app:shapeAppearanceOverlay="@style/RoundedImageViewChats"
+            app:shapeAppearanceOverlay="@style/ImageView_Rounded_Chats"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="@tools:sample/full_names"
-            style="@style/Username_Text_Style"
+            style="@style/Text_Username"
             android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
             app:layout_constraintTop_toTopOf="parent"

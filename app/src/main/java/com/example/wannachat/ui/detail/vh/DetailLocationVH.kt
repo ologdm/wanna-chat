@@ -1,4 +1,4 @@
-package com.example.wannachat.ui.detail
+package com.example.wannachat.ui.detail.vh
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.wannachat.databinding.VhDetailLocationReceivedBinding
@@ -16,13 +16,13 @@ class DetailLocationReceivedVH(
 
     fun bind(item: MessageItem) {
 
-        binding.map.onCreate(null)
+        binding.mapsImage.onCreate(null)
 
-        binding.map.getMapAsync {
+        binding.mapsImage.getMapAsync {
             val (lat, long) = item.content.split(",")
             val position = LatLng(lat.toDouble(), long.toDouble())
 
-            binding.map.onResume()
+            binding.mapsImage.onResume()
             it.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
             it.addMarker(MarkerOptions().position(position))
         }

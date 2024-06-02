@@ -31,8 +31,8 @@
                     android:id="@+id/messageText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@tools:sample/full_names"
-                    style="@style/Primary_Text_Style"/>
+                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    style="@style/Text_Primary" />
 
             <TextView
                     android:id="@+id/date"

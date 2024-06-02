@@ -1,4 +1,4 @@
-package com.example.wannachat.ui.detail
+package com.example.wannachat.ui.detail.vh
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.wannachat.databinding.VhDetailTextReceivedBinding

@@ -38,7 +38,7 @@
                     tools:src="@tools:sample/avatars"
                     android:background="#fff"
                     android:layout_marginEnd="16dp"
-                    app:shapeAppearanceOverlay="@style/RoundedImageViewDetail" />
+                    app:shapeAppearanceOverlay="@style/ImageView_Rounded_Detail" />
 
 
             <TextView
@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="@tools:sample/full_names"
-                    style="@style/Username_Text_Style"
+                    style="@style/Text_Username"
                     android:textSize="16sp"
                     android:textColor="?colorOnSurface"/>
 
@@ -93,7 +93,7 @@
             android:src="@drawable/baseline_arrow_right_24"
             app:layout_constraintTop_toTopOf="@+id/messageEditTextLayout"
             app:layout_constraintBottom_toBottomOf="@+id/messageEditTextLayout"
-            style="@style/RoundedImageButton"
+            style="@style/ImageButton_Rounded"
             app:tint="?colorOnPrimary"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:visibility="visible"
-            style="@style/ProgressBarStyle"
+            style="@style/ProgressBar_Default"
             app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
 
