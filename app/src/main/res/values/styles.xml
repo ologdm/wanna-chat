@@ -1,38 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="RoundedImageButton">
+    <!-- SHAPES    -->
+    <style name="ImageButton_Rounded">
         <item name="android:background">@drawable/baseline_circle</item>
         <item name="android:elevation">4dp</item>
     </style>
 
 
-    <style name="RoundedImageViewDetail" parent="ShapeAppearance.Material3.MediumComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">16dp</item>
-    </style>
-
-    <style name="RoundedImageViewChats" parent="ShapeAppearance.Material3.MediumComponent">
+    <style name="ImageView_Rounded_Chats" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">24dp</item>
     </style>
 
+    <style name="ImageView_Rounded_Detail" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
 
-    <style name="ProgressBarStyle">
+
+    <style name="ProgressBar_Default">
         <item name="android:visibility">visible</item>
         <item name="android:elevation">4dp</item>
         <item name="android:indeterminate">true</item>
     </style>
 
 
-    <style name="Primary_Text_Style">
-        <item name="android:textColor">?colorOnSurface</item>
+    <!-- new app version - wannachat  -->
+    <style name="CardView_Vh_Layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="cardElevation">5dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="CardView_Vh_ImageContainer">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="android:scaleType">centerCrop</item>
     </style>
 
 
-    <style name="Username_Text_Style">
+
+    <!-- TYPOGRAPHY    -->
+    <style name="Text_Username">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text_Primary">
+        <item name="android:textColor">?colorOnSurface</item>
     </style>
 
 

@@ -1,4 +1,8 @@
-# ChatApp
+# WannaChat
+
+Chat app interface that allows users to view chats and engage in conversation.   
+It currently focuses solely on the frontend part.
+
 
 ## Description
 The project is structured into 3 layers:
@@ -13,9 +17,10 @@ Also have:
 
 ## Screenshots 
 <div class="row">
-  <img src="app/app-screenshots/chats.png" width="30%"/>
-  <img src="app/app-screenshots/conversation.png" width="30%"/>
-  <img src="app/app-screenshots/error_screen.png" width="30%"/>
+  <img src="app/app-screenshots/chats.png" width="24%"/>
+  <img src="app/app-screenshots/conversation_1.png" width="24%"/>
+  <img src="app/app-screenshots/conversation_2.png" width="24%"/>
+  <img src="app/app-screenshots/error_screen.png" width="24%"/>
 </div>        
 
 
@@ -28,3 +33,7 @@ Also have:
 - [Hilt](https://dagger.dev/hilt/) 
 - [Material Design 3](https://m3.material.io/)
 - Maps Play Services
+
+## What's next?
+
+Soon, this project will evolve into a fully functional chat app with a __backend powered by Firebase.__

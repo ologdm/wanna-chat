@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ChatApp" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="Base.Theme.WannaChat" parent="Theme.Material3.DynamicColors.DayNight">
         <!-- no toolbar -->
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">?android:colorBackground</item>
         <item name="android:windowLightStatusBar">@bool/light_icons</item></style>
 
-    <style name="Theme.ChatApp" parent="Base.Theme.ChatApp" />
+    <style name="Theme.WannaChat" parent="Base.Theme.WannaChat" />
 </resources>

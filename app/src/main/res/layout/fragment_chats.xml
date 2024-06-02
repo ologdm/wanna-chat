@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:visibility="visible"
-            style="@style/ProgressBarStyle"
+            style="@style/ProgressBar_Default"
             app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
 
