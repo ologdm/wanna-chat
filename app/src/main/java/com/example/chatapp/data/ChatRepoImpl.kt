@@ -24,7 +24,7 @@ class ChatRepoImpl @Inject constructor(
                 val sortedList = mappedList.sortedByDescending { item ->
                     item.lastMsgDate
                 }
-                sortedList
+                sortedList // forma finale che deve avere R
             }
             onResponse(mapped)
         }

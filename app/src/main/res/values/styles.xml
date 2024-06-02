@@ -17,6 +17,11 @@
         <item name="cornerSize">24dp</item>
     </style>
 
+    <style name="RoundedImageMessage" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
 
     <style name="ProgressBarStyle">
         <item name="android:visibility">visible</item>

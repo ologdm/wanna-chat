@@ -1,7 +1,6 @@
 package com.example.chatapp.utils
 
 
-
 sealed interface IoResponse<out T> {
 
     data class Success<T>(val value: T) : IoResponse<T>

@@ -3,6 +3,7 @@ package com.example.chatapp.ui.detail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chatapp.databinding.VhDetailImageReceivedBinding
 import com.example.chatapp.databinding.VhDetailLocationReceivedBinding
 import com.example.chatapp.databinding.VhDetailLocationSentBinding
 import com.example.chatapp.databinding.VhDetailTextReceivedBinding
@@ -18,9 +19,11 @@ class DetailAdapter(
         const val VH_TYPE_TEXT_SENT = 2
         const val VH_TYPE_LOCATION_RECEIVED = 3
         const val VH_TYPE_LOCATION_SENT = 4
+        const val VH_TYPE_IMAGE_RECEIVED = 5
 
         const val TEXT = "text"
         const val LOCATION = "location"
+        const val IMAGE = "image"
     }
 
     private var adapterList: List<MessageItem> = listOf()
@@ -31,6 +34,7 @@ class DetailAdapter(
         return when (item.type) {
             TEXT -> if (item.isMe) VH_TYPE_TEXT_SENT else VH_TYPE_TEXT_RECEIVED
             LOCATION -> if (item.isMe) VH_TYPE_LOCATION_SENT else VH_TYPE_LOCATION_RECEIVED
+            IMAGE -> VH_TYPE_IMAGE_RECEIVED
             else -> error("invalid type")
         }
     }
@@ -64,6 +68,11 @@ class DetailAdapter(
                 return DetailLocationSentVH(binding)
             }
 
+            VH_TYPE_IMAGE_RECEIVED -> {
+                val binding = VhDetailImageReceivedBinding.inflate(layoutInflater, parent,false)
+                return DetailImageVH(binding)
+            }
+
             else -> error("Invalid view type")
         }
     }
@@ -83,6 +92,9 @@ class DetailAdapter(
                 holder.bind(item)
             }
             is DetailLocationReceivedVH -> {
+                holder.bind(item)
+            }
+            is DetailImageVH -> {
                 holder.bind(item)
             }
         }
