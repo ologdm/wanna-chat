@@ -1,4 +1,4 @@
-# ChatApp
+# WannaChat
 
 ## Description
 The project is structured into 3 layers:
