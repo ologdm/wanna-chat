@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.chatapp.databinding.VhChatsBinding
 import com.example.wannachat.databinding.VhChatsBinding
 import com.example.wannachat.domain.ChatItem
 

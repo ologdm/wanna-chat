@@ -13,11 +13,11 @@ plugins {
 
 
 android {
-    namespace 'com.example.chatapp'
+    namespace 'com.example.wannachat'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.chatapp"
+        applicationId "com.example.wannachat"
         minSdk 24
         targetSdk 34
         versionCode 1
