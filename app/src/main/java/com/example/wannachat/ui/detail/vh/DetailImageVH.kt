@@ -8,7 +8,7 @@ import com.example.wannachat.domain.MessageItem
 import com.example.wannachat.utils.formatToStringDateTime
 
 class DetailImageReceivedVH(
-    val binding: VhDetailImageReceivedBinding
+    private val binding: VhDetailImageReceivedBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: MessageItem) {
