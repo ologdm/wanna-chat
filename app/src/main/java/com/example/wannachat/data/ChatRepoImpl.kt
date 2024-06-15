@@ -15,19 +15,27 @@ class ChatRepoImpl @Inject constructor(
 ) : ChatRepo {
 
 
-    override fun getChats(onResponse: (IoResponse<List<ChatItem>>) -> Unit) {
-        chatNetworkDS.getChatsList { response ->
-            val mapped = response.ioMapper { rawDto ->
-                val mappedList = rawDto.record.map { dto ->
-                    dto.toDomain()
-                }
-                val sortedList = mappedList.sortedByDescending { item ->
-                    item.lastMsgDate
-                }
-                sortedList // forma finale che deve avere R
-            }
-            onResponse(mapped)
+    override suspend fun getChats(): IoResponse<List<ChatItem>> {
+        return chatNetworkDS.getChatsList()
+            .ioMapper { rawDto ->
+                rawDto.record
+                    .map { dto -> dto.toDomain() }
+                    .sortedByDescending { item -> item.lastMsgDate }
         }
+
+
+//        chatNetworkDS.getChatsList { response ->
+//            val mapped = response.ioMapper { rawDto ->
+//                val mappedList = rawDto.record.map { dto ->
+//                    dto.toDomain()
+//                }
+//                val sortedList = mappedList.sortedByDescending { item ->
+//                    item.lastMsgDate
+//                }
+//                sortedList // forma finale che deve avere R
+//            }
+//            onResponse(mapped)
+//        }
     }
 
 

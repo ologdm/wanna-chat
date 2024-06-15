@@ -8,7 +8,7 @@ import retrofit2.http.GET
 interface ChatApi {
 
     @GET("v3/b/665ccecbacd3cb34a851bc67")
-    fun getChatsListDto() : Call<ChatListDto>
+    suspend fun getChatsListDto() : ChatListDto
 
 
     @GET("v3/b/665b714dacd3cb34a8513b98")
