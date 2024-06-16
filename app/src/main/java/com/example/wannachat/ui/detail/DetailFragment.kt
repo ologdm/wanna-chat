@@ -64,11 +64,6 @@ class DetailFragment : Fragment() {
             recyclerView.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true)
 
-//            // TODO offset
-//            var px = 20.toPx(requireContext())
-////            recyclerView.addItemDecoration(CustomItemDecoration(px))
-////            recyclerView.addItemDecoration(GroupItemDecoration(px))
-
             buttonBack.setOnClickListener {
                 requireActivity().onBackPressed()
             }

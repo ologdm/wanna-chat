@@ -32,15 +32,15 @@ fun <T> StateContainer<T>.statesFlow(
         isNetworkError -> {
             progressBar.visibility = View.GONE
             errorMsg.visibility = View.VISIBLE
-            retry.visibility = View.VISIBLE
             errorMsg.text = context.getString(R.string.please_check_your_internet_connection)
+            retry.visibility = View.VISIBLE
         }
 
         isOtherError -> {
             progressBar.visibility = View.GONE
             errorMsg.visibility = View.VISIBLE
-            retry.visibility = View.GONE
             errorMsg.text = context.getString(R.string.something_went_wrong)
+            retry.visibility = View.GONE
         }
 
         else -> {

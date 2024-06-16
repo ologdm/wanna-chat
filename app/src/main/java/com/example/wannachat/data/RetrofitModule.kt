@@ -14,33 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {
 
-
-//    @Provides
-//    @Singleton
-//    fun getApi(): ChatApi {
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://api.jsonbin.io/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .callFactory(
-//                OkHttpClient.Builder()
-//                    .addInterceptor(Interceptor { chain ->
-//                        val newRequest = chain.request().newBuilder()
-//                            .addHeader(
-//                                "X-Access-Key",
-//                                "$2a$10\$ZUUP6OpOmZ8u2p/SAofEF.N32mQ72UWqs9/Fl6Zvom7./2vdo1JGq"
-//                            )
-//                            .build()
-//                        chain.proceed(newRequest)
-//                    })
-//                    .build()
-//            )
-//            .build()
-//
-//        return retrofit.create(ChatApi::class.java)
-//    }
-
-
-    //test
+    // new TODO doesen't need with firebase
     @Provides
     @Singleton
     fun getApi(): ChatApi {

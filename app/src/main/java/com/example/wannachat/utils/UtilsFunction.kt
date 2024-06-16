@@ -12,8 +12,7 @@ fun String.formatToDate(): Date? {
 
 
 fun Date.formatToStringDateTime(): String {
-    // formato output ora e data
-    val dateTimeFormat = SimpleDateFormat("dd MMM yyyy    HH:mm", Locale.getDefault())
+    val dateTimeFormat = SimpleDateFormat("dd MMM yyyy    HH:mm", Locale.getDefault()) // output format  hour and date
     return dateTimeFormat.format(this)
 }
 

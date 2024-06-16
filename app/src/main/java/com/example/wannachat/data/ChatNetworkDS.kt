@@ -18,17 +18,38 @@ class ChatNetworkDS @Inject constructor(
     private val chatApi: ChatApi
 ) {
 
+
     suspend fun getChatsList(): IoResponse<ChatListDto> {
         return try {
-            val result = chatApi.getChatsListDto()
+            val result = chatApi.getChatsListDto() // == response.body() of retrofit
+            IoResponse.Success(result)
+        } catch (ex: CancellationException) { // serve solo per la cancellazione coroutines perche la cancellazione deve essere cooperativa
+            throw ex // r#
+        } catch (ex: HttpException) {
+            IoResponse.OtherError // r#
+        } catch (ex: Throwable) {
+            IoResponse.NetworkError // r#
+        }
+    }
+
+
+    suspend fun getMessageList(): IoResponse<MessageListDto> {
+
+        return try {
+            val result = chatApi.getMessageListDto()
             IoResponse.Success(result)
         } catch (ex: CancellationException) {
-            // serve solo per la cancellazione coroutines perche la cancellazione deve essere cooperativa
             throw ex
+        } catch (ex: HttpException) {
+            IoResponse.OtherError
         } catch (ex: Throwable) {
-            // TODO HttpException
             IoResponse.NetworkError
         }
+    }
+
+
+}
+
 
 //        val call: Call<ChatListDto> = chatApi.getChatsListDto()
 //
@@ -54,34 +75,3 @@ class ChatNetworkDS @Inject constructor(
 //                onResponse(IoResponse.NetworkError)
 //            }
 //        })
-    }
-
-
-    fun getMessageList(onResponse: (IoResponse<MessageListDto>) -> Unit) {
-        val call: Call<MessageListDto> = chatApi.getMessageListDto()
-
-        call.enqueue(object : Callback<MessageListDto> {
-            override fun onResponse(
-                call: Call<MessageListDto>,
-                response: Response<MessageListDto>
-            ) {
-                if (response.isSuccessful) {
-                    onResponse(IoResponse.Success(response.body()!!))
-                } else {
-                    val exception = HttpException(response)
-                    exception.printStackTrace()
-                    onResponse(IoResponse.OtherError)
-                }
-            }
-
-            override fun onFailure(call: Call<MessageListDto>, throwable: Throwable) {
-                throwable.printStackTrace()
-                onResponse(IoResponse.NetworkError)
-            }
-
-        })
-
-    }
-
-
-}

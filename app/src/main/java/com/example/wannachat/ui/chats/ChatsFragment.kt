@@ -71,19 +71,12 @@ class ChatsFragment : Fragment() {
         }
 
 
-        //lifecycleScope, non usare, lifecycle del fragment
-        // !! lo scope e del fragment view quindi vinene resettato ad ogni aggiornamento,
-        // es giro schermo, (config. change)
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            val stateConteint = viewModel.loadUserConversations2()
-//            adapter.submitList(stateConteint.items)
-//        }  // non usare per chiamate internet , operazioni con latenza in generale
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        // viewLifecycleOwner.lifecycleScope.cancel()  -fa quesnto alla chiusura
     }
 
 }

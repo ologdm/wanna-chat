@@ -22,31 +22,12 @@ class ChatsViewModel @Inject constructor(
         loadUserConversations()
     }
 
-//    suspend fun loadUserConversations2(): StateContainer<ChatItem> {
-//        state.value = StateContainer(isLoading = true)
-//
-//        val response = repository.getChats()
-//        return when (response) {
-//            is IoResponse.Success -> {
-//                StateContainer(items = response.value)
-//            }
-//
-//            is IoResponse.NetworkError -> {
-//                StateContainer(isNetworkError = true)
-//            }
-//
-//            is IoResponse.OtherError -> {
-//                StateContainer(isOtherError = true)
-//            }
-//        }
-//    }
 
     fun loadUserConversations() {
         viewModelScope.launch {
             state.value = StateContainer(isLoading = true)
 
-            val response = repository.getChats()
-            when (response) {
+            when (val response = repository.getChats()) {
                 is IoResponse.Success -> {
                     state.value = StateContainer(items = response.value)
                 }
@@ -59,6 +40,10 @@ class ChatsViewModel @Inject constructor(
             }
         }
 
+    }
+
+
+}
 
 //        state.value = StateContainer(isLoading = true)
 //
@@ -75,8 +60,3 @@ class ChatsViewModel @Inject constructor(
 //                }
 //            }
 //        }
-
-    }
-
-
-}

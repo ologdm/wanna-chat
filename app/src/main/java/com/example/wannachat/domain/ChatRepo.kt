@@ -6,6 +6,6 @@ interface ChatRepo {
 
     suspend fun getChats(): IoResponse<List<ChatItem>>
 
-    fun getMessages(onResponse: (IoResponse<List<MessageItem>>) -> Unit)
+    suspend fun getMessages() : IoResponse<List<MessageItem>>
 
 }
