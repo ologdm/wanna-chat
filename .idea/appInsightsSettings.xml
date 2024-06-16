@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.wannachat" />
+                  <option name="mobileSdkAppId" value="1:72338277694:android:6a7da96ac2cae7e62ad86f" />
+                  <option name="projectId" value="wannachat-6b648" />
+                  <option name="projectNumber" value="72338277694" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

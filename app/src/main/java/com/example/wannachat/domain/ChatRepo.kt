@@ -4,8 +4,8 @@ import com.example.wannachat.utils.IoResponse
 
 interface ChatRepo {
 
-    fun getChats(onResponse: (IoResponse<List<ChatItem>>) -> Unit)
+    suspend fun getChats(): IoResponse<List<ChatItem>>
 
-    fun getMessages(onResponse: (IoResponse<List<MessageItem>>) -> Unit)
+    suspend fun getMessages() : IoResponse<List<MessageItem>>
 
 }

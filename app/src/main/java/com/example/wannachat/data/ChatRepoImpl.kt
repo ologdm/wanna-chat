@@ -15,36 +15,42 @@ class ChatRepoImpl @Inject constructor(
 ) : ChatRepo {
 
 
-    override fun getChats(onResponse: (IoResponse<List<ChatItem>>) -> Unit) {
-        chatNetworkDS.getChatsList { response ->
-            val mapped = response.ioMapper { rawDto ->
-                val mappedList = rawDto.record.map { dto ->
-                    dto.toDomain()
-                }
-                val sortedList = mappedList.sortedByDescending { item ->
-                    item.lastMsgDate
-                }
-                sortedList // forma finale che deve avere R
+    override
+    suspend fun getChats(): IoResponse<List<ChatItem>> {
+        return chatNetworkDS.getChatsList()
+            .ioMapper { rawDto ->
+                rawDto.record
+                    .map { dto -> dto.toDomain() }
+                    .sortedByDescending { item -> item.lastMsgDate }
             }
-            onResponse(mapped)
-        }
     }
 
 
-    override fun getMessages(onResponse: (IoResponse<List<MessageItem>>) -> Unit) {
-        chatNetworkDS.getMessageList { response ->
-            val mapped = response.ioMapper { rawDto ->
-                val mappedList = rawDto.record.map { dto ->
-                    dto.toDomain()
-                }
-                val sortedList = mappedList.sortedByDescending { item ->
-                    item.date
-                }
-                sortedList
+    override
+    suspend fun getMessages(): IoResponse<List<MessageItem>> {
+        // devo mappare oggetto ottenuto
+        return chatNetworkDS.getMessageList()
+            .ioMapper { rawDto ->
+                rawDto.record
+                    .map { dto -> dto.toDomain() }
+                    .sortedByDescending { item -> item.date }
             }
-            onResponse(mapped)
-        }
     }
 
 
 }
+
+
+// old chats
+//        chatNetworkDS.getChatsList { response ->
+//            val mapped = response.ioMapper { rawDto ->
+//                val mappedList = rawDto.record.map { dto ->
+//                    dto.toDomain()
+//                }
+//                val sortedList = mappedList.sortedByDescending { item ->
+//                    item.lastMsgDate
+//                }
+//                sortedList // forma finale che deve avere R
+//            }
+//            onResponse(mapped)
+//        }
