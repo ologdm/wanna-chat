@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class RetrofitModule {
 
-    // new TODO doesen't need with firebase
     @Provides
     @Singleton
     fun getApi(): ChatApi {

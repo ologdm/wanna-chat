@@ -20,10 +20,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ChatsFragment : Fragment() {
 
-    private var binding: FragmentChatsBinding? = null
+    private var _binding: FragmentChatsBinding? = null
+    private val binding get() = _binding
 
     @Inject
     lateinit var navigator: Navigator
+    private val viewModel by viewModels<ChatsViewModel>()
 
     private val adapter = ChatsAdapter(
         onClick = { chatItem ->
@@ -31,22 +33,18 @@ class ChatsFragment : Fragment() {
         })
 
 
-    private val viewModel by viewModels<ChatsViewModel>()
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentChatsBinding.inflate(inflater, container, false)
+        _binding = FragmentChatsBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         viewModel.state.observe(
             viewLifecycleOwner, Observer { stateContainer ->
@@ -76,7 +74,7 @@ class ChatsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        _binding = null
     }
 
 }

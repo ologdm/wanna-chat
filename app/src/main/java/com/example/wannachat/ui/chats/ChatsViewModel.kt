@@ -1,5 +1,6 @@
 package com.example.wannachat.ui.chats
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +17,9 @@ class ChatsViewModel @Inject constructor(
     private val repository: ChatRepo
 ) : ViewModel() {
 
-    val state = MutableLiveData<StateContainer<ChatItem>>()
+    private val _state = MutableLiveData<StateContainer<ChatItem>>()
+    val state: LiveData<StateContainer<ChatItem>> get() = _state
+
 
     init {
         loadUserConversations()
@@ -25,17 +28,19 @@ class ChatsViewModel @Inject constructor(
 
     fun loadUserConversations() {
         viewModelScope.launch {
-            state.value = StateContainer(isLoading = true)
+            _state.value = StateContainer(isLoading = true)
 
             when (val response = repository.getChats()) {
                 is IoResponse.Success -> {
-                    state.value = StateContainer(items = response.value)
+                    _state.value = StateContainer(items = response.value)
                 }
+
                 is IoResponse.NetworkError -> {
-                    state.value = StateContainer(isNetworkError = true)
+                    _state.value = StateContainer(isNetworkError = true)
                 }
+
                 is IoResponse.OtherError -> {
-                    state.value = StateContainer(isOtherError = true)
+                    _state.value = StateContainer(isOtherError = true)
                 }
             }
         }

@@ -31,13 +31,12 @@ class DetailFragment : Fragment() {
         }
     }
 
-
-    private var binding: FragmentDetailBinding? = null
-    private val adapter = DetailAdapter()
-
     private var chatItem: ChatItem? = null
 
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding
     private val viewModel by viewModels<DetailViewModel>()
+    private val adapter = DetailAdapter()
 
 
     override fun onCreateView(
@@ -45,7 +44,7 @@ class DetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
@@ -75,9 +74,7 @@ class DetailFragment : Fragment() {
             userName.text = chatItem?.userName
         }
 
-
         viewModel.state.observe(viewLifecycleOwner, Observer { stateContainer ->
-
             adapter.updateList(stateContainer.items)
 
             stateContainer.statesFlow(
@@ -97,14 +94,14 @@ class DetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        _binding = null
     }
 
 
-    // TODO offset
-    fun Int.toPx(context: Context): Int {
-        return (this * context.resources.displayMetrics.density).toInt()
-    }
+//    // TODO offset
+//    fun Int.toPx(context: Context): Int {
+//        return (this * context.resources.displayMetrics.density).toInt()
+//    }
 }
 
 

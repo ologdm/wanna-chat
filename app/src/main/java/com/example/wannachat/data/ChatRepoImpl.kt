@@ -11,13 +11,13 @@ import javax.inject.Singleton
 
 @Singleton
 class ChatRepoImpl @Inject constructor(
-    private val chatNetworkDS: ChatNetworkDS
+    private val networkDS: NetworkDS
 ) : ChatRepo {
 
 
     override
     suspend fun getChats(): IoResponse<List<ChatItem>> {
-        return chatNetworkDS.getChatsList()
+        return networkDS.getChatsList()
             .ioMapper { rawDto ->
                 rawDto.record
                     .map { dto -> dto.toDomain() }
@@ -28,8 +28,7 @@ class ChatRepoImpl @Inject constructor(
 
     override
     suspend fun getMessages(): IoResponse<List<MessageItem>> {
-        // devo mappare oggetto ottenuto
-        return chatNetworkDS.getMessageList()
+        return networkDS.getMessagesList()
             .ioMapper { rawDto ->
                 rawDto.record
                     .map { dto -> dto.toDomain() }
@@ -41,7 +40,7 @@ class ChatRepoImpl @Inject constructor(
 }
 
 
-// old chats
+// old chats #############################################################
 //        chatNetworkDS.getChatsList { response ->
 //            val mapped = response.ioMapper { rawDto ->
 //                val mappedList = rawDto.record.map { dto ->

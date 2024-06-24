@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "72338277694",
+    "firebase_url": "https://wannachat-6b648-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "wannachat-6b648",
+    "storage_bucket": "wannachat-6b648.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72338277694:android:6a7da96ac2cae7e62ad86f",
+        "android_client_info": {
+          "package_name": "com.example.wannachat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8n6qghv3jdSNCRIszkgilQBOhff7U_Ig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

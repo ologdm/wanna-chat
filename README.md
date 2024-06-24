@@ -1,15 +1,8 @@
 # WannaChat
 
-Chat app interface that allows users to view chats and engage in conversation.   
-It currently focuses solely on the frontend part.
-
-
-## Description
-The project is structured into 3 layers:
-- __UI (MVVM)__ - Activity, Fragments, ViewModel, Navigator
-- __Domain__ - facilitates app logic (date converter, sent/received state etc.)
-- __Data__ - Repository, Network Data Source
-
+Chat app interface that allows users to view chats and engage in conversation.
+Currently, this project focuses solely on the frontend part and uses coroutine functions 
+along with elements of clean architecture.
 
 Also have:
 - Dependency Injection with Hilt Dagger
