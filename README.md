@@ -1,7 +1,7 @@
 # WannaChat
 
 Chat app interface that allows users to view chats and engage in conversation.
-Currently, this project focuses solely on the frontend part and uses coroutine functions 
+Currently, this project focuses solely on the frontend part and uses kotlin coroutines functions 
 along with elements of clean architecture.
 
 Also have:
