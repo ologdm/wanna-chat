@@ -68,8 +68,6 @@ class ChatsFragment : Fragment() {
             viewModel.loadUserConversations()
         }
 
-
-
     }
 
     override fun onDestroyView() {

@@ -16,7 +16,9 @@ class Navigator @Inject constructor(
 
     fun startChatsFragment() {
         val fragmentManager: FragmentManager = fragmentActivity.supportFragmentManager
-        fragmentManager.beginTransaction().replace(R.id.frameLayout, ChatsFragment()).commit()
+        fragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, ChatsFragment())
+            .commit()
     }
 
 

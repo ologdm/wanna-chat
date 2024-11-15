@@ -12,8 +12,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.WannaChat"
             tools:targetApi="31"
-            android:name=".App"
-            >
+            android:name=".App">
 
         <activity
                 android:name=".ui.MainActivity"
