@@ -33,29 +33,3 @@ class NetworkDS @Inject constructor(
     }
 
 }
-
-// old
-//        val call: Call<ChatListDto> = chatApi.getChatsListDto()
-//
-//        call.enqueue(object : Callback<ChatListDto> {
-//            override fun onResponse(
-//                call: Call<ChatListDto>,
-//                response: Response<ChatListDto>
-//            ) {
-//                if (response.isSuccessful) {
-//                    onResponse(IoResponse.Success(response.body()!!))
-//                } else {
-//                    val exception = HttpException(response)
-//                    exception.printStackTrace()
-//                    onResponse(IoResponse.OtherError)
-//                }
-//            }
-//
-//            override fun onFailure(
-//                call: Call<ChatListDto>,
-//                throwable: Throwable
-//            ) {
-//                throwable.printStackTrace()
-//                onResponse(IoResponse.NetworkError)
-//            }
-//        })

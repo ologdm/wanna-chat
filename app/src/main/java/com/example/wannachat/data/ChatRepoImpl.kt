@@ -38,18 +38,3 @@ class ChatRepoImpl @Inject constructor(
 
 
 }
-
-
-// old chats #############################################################
-//        chatNetworkDS.getChatsList { response ->
-//            val mapped = response.ioMapper { rawDto ->
-//                val mappedList = rawDto.record.map { dto ->
-//                    dto.toDomain()
-//                }
-//                val sortedList = mappedList.sortedByDescending { item ->
-//                    item.lastMsgDate
-//                }
-//                sortedList // forma finale che deve avere R
-//            }
-//            onResponse(mapped)
-//        }

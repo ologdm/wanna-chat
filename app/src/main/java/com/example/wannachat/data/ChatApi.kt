@@ -10,11 +10,9 @@ interface ChatApi {
 
     @GET("v3/b/665ccecbacd3cb34a851bc67")
     suspend fun getChatsListDto(): ChatListDto
-//    fun getChatsListDto() :Call<ChatListDto>
 
 
     @GET("v3/b/665b714dacd3cb34a8513b98")
     suspend fun getMessageListDto(): MessageListDto
-//    fun getMessageListDto() :Call<MessageListDto>
 
 }

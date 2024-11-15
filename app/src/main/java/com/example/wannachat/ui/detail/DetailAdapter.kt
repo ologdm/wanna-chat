@@ -34,7 +34,7 @@ class DetailAdapter(
         const val IMAGE = "image"
     }
 
-    var adapterList: List<MessageItem> = listOf()
+    private var adapterList: List<MessageItem> = listOf()
 
 
     override fun getItemViewType(position: Int): Int {
