@@ -15,6 +15,15 @@ plugins {
 }
 
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties') // Cerca il file nella directory radice
+if (localPropertiesFile.exists()) {  // Controlla se il file esiste
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)  // Carica le proprietà
+    }
+}
+
+
 android {
     namespace 'com.example.wannachat'
     compileSdk 34
@@ -26,6 +35,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        // Pass the key to Manifest
+        manifestPlaceholders = [mapsApiKey: localProperties.getProperty("maps_api_key")]
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,8 +48,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -45,6 +57,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 
 }
@@ -59,6 +72,7 @@ dependencies {
     implementation libs.firebase.database
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
+    testImplementation libs.kotlinx.coroutines.test
     androidTestImplementation libs.androidx.espresso.core
 
     // retrofit
@@ -92,8 +106,9 @@ dependencies {
     // (automatic versione with bom)
     implementation("com.google.firebase:firebase-database")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+    // coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 }
 
 

@@ -39,18 +39,18 @@ class DetailLocationSentVH(
     fun bind(item: MessageItem) {
 
         // maps function ready to use
-//        binding.map.onCreate(null)
-//
-//        binding.map.getMapAsync {
-//            val (lat, long) = item.content.split(",")
-//            val position = LatLng(lat.toDouble(), long.toDouble())
-//
-//            binding.map.onResume()
-//            it.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
-//            it.addMarker(MarkerOptions().position(position))
-//        }
-//
-//        binding.date.hint = item.date.formatToStringDateTime()
+        binding.mapsImage.onCreate(null)
+
+        binding.mapsImage.getMapAsync {
+            val (lat, long) = item.content.split(",")
+            val position = LatLng(lat.toDouble(), long.toDouble())
+
+            binding.mapsImage.onResume()
+            it.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
+            it.addMarker(MarkerOptions().position(position))
+        }
+
+        binding.date.hint = item.date.formatToStringDateTime()
     }
 
 }
