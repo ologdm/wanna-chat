@@ -36,7 +36,7 @@ android {
         versionName "1.0"
 
         // Pass the key to Manifest
-        manifestPlaceholders = [mapsApiKey: localProperties.getProperty("maps_api_key")]
+        manifestPlaceholders = [mapsApiKey: localProperties.getProperty("google_maps_api_key")]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,8 +48,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'

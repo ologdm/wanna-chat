@@ -16,6 +16,12 @@ Also have:
   <img src="app/app-screenshots/error_screen.png" width="24%"/>
 </div>        
 
+## Setup
+
+create your [google maps api key](https://developers.google.com/maps/documentation/android-sdk/get-api-key?hl=it)  and add it to `local.properties`
+```
+google_maps_api_key=YOUR_GOOGLE_MAPS_API_KEY
+```
 
 ## Tech stack & open-source libraries
 - Min SDK level 24
@@ -25,7 +31,7 @@ Also have:
 - [Glide](https://github.com/bumptech/glide)
 - [Hilt](https://dagger.dev/hilt/) 
 - [Material Design 3](https://m3.material.io/)
-- Maps Play Services
+- [Maps Play Services](https://developers.google.com/maps?hl=it)
 
 ## What's next?
 
